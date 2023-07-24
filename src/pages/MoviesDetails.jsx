@@ -1,4 +1,4 @@
-import { useParams, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { getMovieById } from '../services/api';
 import MovieCard from 'components/MovieCard/MovieCard';
@@ -14,8 +14,11 @@ const DetailedMoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const goBack = location.state?.from ?? '/';
+  const handleGoBack = () => {
+    navigate(-1); // Navigates back to the previous page
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +35,7 @@ const DetailedMoviePage = () => {
 
   return (
     <DetailsContainer>
-      <BackButton to={goBack}>Go back</BackButton>
+      <BackButton onClick={handleGoBack}>Go back</BackButton>
       {movie && <MovieCard movie={movie} />}
       <LinkContainer>
         <LinkItemCast to={`/movies/${id}/cast`} state={{ from: location }}>

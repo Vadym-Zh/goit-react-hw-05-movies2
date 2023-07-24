@@ -1,18 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const MovieQuery = ({ movies }) => {
+  const location = useLocation();
 
-    const location = useLocation();
-
-    return (
+  return (
+    <div>
+      {movies.length ? (
         <ul>
-            {movies.map(movie => (
-                <li key={movie.id}>
-                    <Link to={`/movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link>
-                </li>
-            ))}
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
+            </li>
+          ))}
         </ul>
-    )
-}
+      ) : (
+        <p>Nothing found &#128064;</p>
+      )}
+    </div>
+  );
+};
 
 export default MovieQuery;
