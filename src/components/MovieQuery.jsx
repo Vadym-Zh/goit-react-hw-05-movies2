@@ -4,21 +4,15 @@ const MovieQuery = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <div>
-      {movies.length ? (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Nothing found &#128064;</p>
-      )}
-    </div>
+    <ul>
+      {movies.map(movie => (
+        <li key={movie.id}>
+          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            {movie.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 
