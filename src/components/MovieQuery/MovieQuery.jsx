@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 const MovieQuery = ({ movies }) => {
   const location = useLocation();
@@ -16,6 +17,10 @@ const MovieQuery = ({ movies }) => {
       </ul>
     </>
   );
+};
+
+MovieQuery.propTypes = {
+  movies: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
 export default MovieQuery;

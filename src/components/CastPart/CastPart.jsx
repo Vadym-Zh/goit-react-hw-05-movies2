@@ -5,6 +5,7 @@ import {
   CastItemText,
   CastItemTextP,
 } from './CastPart.styled';
+import propTypes from 'prop-types';
 
 const CastPart = ({ casts }) => {
   return (
@@ -32,6 +33,10 @@ const CastPart = ({ casts }) => {
       ))}
     </CastItem>
   );
+};
+
+CastPart.propTypes = {
+  casts: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
 export default CastPart;

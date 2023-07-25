@@ -1,6 +1,6 @@
-import { useParams, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
-import { getMovieById } from '../services/api';
+import { getMovieById } from '../../services/api';
 import MovieCard from 'components/MovieCard/MovieCard';
 import {
   DetailsContainer,
@@ -14,11 +14,13 @@ const DetailedMoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleGoBack = () => {
-    navigate(-1); // Navigates back to the previous page
-  };
+  // const handleGoBack = () => {
+  //   navigate(-1);
+  // };
+
+  const handleGoBack = location?.state?.from ?? '/';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,13 +37,21 @@ const DetailedMoviePage = () => {
 
   return (
     <DetailsContainer>
-      <BackButton onClick={handleGoBack}>Go back</BackButton>
+      {<BackButton to={handleGoBack}>Go back</BackButton>}
       {movie && <MovieCard movie={movie} />}
       <LinkContainer>
-        <LinkItemCast to={`/movies/${id}/cast`} state={{ from: location }}>
+        <LinkItemCast
+          to={`/movies/${id}/cast`}
+          state={location.state}
+          // state={{ from: location }}
+        >
           Cast
         </LinkItemCast>
-        <LinkItemReview to={`/movies/${id}/reviews`} state={{ from: location }}>
+        <LinkItemReview
+          to={`/movies/${id}/reviews`}
+          state={location.state}
+          // state={{ from: location }}
+        >
           Reviews
         </LinkItemReview>
       </LinkContainer>

@@ -35,7 +35,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMoviesReviews } from '../../services/api';
-import ReviewPart from './ReviewPart';
+import ReviewPart from '../ReviewPart/ReviewPart';
 
 const MovieReview = () => {
   const { id } = useParams();

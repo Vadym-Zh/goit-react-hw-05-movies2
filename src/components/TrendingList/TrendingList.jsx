@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { getTrendingMovies } from '../services/api';
+import { getTrendingMovies } from '../../services/api';
 import {
   MovieList,
   MovieListItem,
   MovieListItemLink,
 } from './TrendingList.styled';
+
+import PropTypes from 'prop-types';
 
 const TrendingList = () => {
   const [movies, setMovies] = useState([]);
@@ -33,6 +35,10 @@ const TrendingList = () => {
       ))}
     </MovieList>
   );
+};
+
+TrendingList.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default TrendingList;

@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { getMoviesQuery } from "../../services/api";
-import SearchBar from "../../components/SearchBar";
-import MovieQuery from "../../components/MovieQuery";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { getMoviesQuery } from '../../services/api';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import MovieQuery from '../../components/MovieQuery/MovieQuery';
 
 const MoviesPage = () => {
-    const [movies, setMovies] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const searchWord = searchParams.get('searchWord');
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchWord = searchParams.get('searchWord');
 
-    useEffect(() => {
+  useEffect(() => {
     if (searchWord) {
       const fetchMovies = async () => {
         try {
@@ -21,20 +21,20 @@ const MoviesPage = () => {
       };
       fetchMovies();
     }
-    }, [searchWord]);
-    
-    const handleSubmit = event => {
+  }, [searchWord]);
+
+  const handleSubmit = event => {
     event.preventDefault();
 
     setSearchParams({ searchWord: event.target.elements.searchWord.value });
   };
 
-    return (
-        <div>
-            <SearchBar onSubmit={handleSubmit} />
-            <MovieQuery movies={movies} />
-        </div>
-    )
-}
+  return (
+    <div>
+      <SearchBar onSubmit={handleSubmit} />
+      <MovieQuery movies={movies} />
+    </div>
+  );
+};
 
 export default MoviesPage;

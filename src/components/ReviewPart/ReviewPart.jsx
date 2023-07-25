@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import { ReviewList, ReviewItem } from './ReviewPart.styled';
 
-const ReviewPart = ({ reviews }) =>{
+const ReviewPart = ({ reviews }) => {
   return (
     <ReviewList>
       {reviews.map(review => (
@@ -12,10 +12,10 @@ const ReviewPart = ({ reviews }) =>{
       ))}
     </ReviewList>
   );
-}
-
-export default ReviewPart;
+};
 
 ReviewPart.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
 };
+
+export default ReviewPart;

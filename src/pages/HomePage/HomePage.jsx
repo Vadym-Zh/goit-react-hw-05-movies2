@@ -1,5 +1,5 @@
 import React from 'react';
-import TrendingList from 'components/TrendingList';
+import TrendingList from 'components/TrendingList/TrendingList';
 import { HomeContainer, TrendingTitle } from './HomePage.styled';
 
 const HomePage = () => {

@@ -1,7 +1,8 @@
 import { getMoviesCast } from '../../services/api';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import CastPart from './CastPart';
+import CastPart from '../CastPart/CastPart';
+import PropTypes from 'prop-types';
 
 const MovieCast = () => {
   const { id } = useParams();
@@ -33,6 +34,10 @@ const MovieCast = () => {
       )}
     </div>
   );
+};
+
+MovieCast.propTypes = {
+  casts: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default MovieCast;

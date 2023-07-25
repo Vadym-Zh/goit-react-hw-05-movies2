@@ -4,9 +4,11 @@ import SharedLayout from './SharedLayout/SharedLayout';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('../pages/MoviesPage/MoviesPage'));
-const DetailedMoviePage = lazy(() => import('../pages/MoviesDetails'));
-const MovieCast = lazy(() => import('../components/Movie/MovieCast'));
-const MovieReview = lazy(() => import('../components/Movie/MovieReview'));
+const DetailedMoviePage = lazy(() =>
+  import('../pages/MovieDetails/MoviesDetails')
+);
+const MovieCast = lazy(() => import('./MovieCast/MovieCast'));
+const MovieReview = lazy(() => import('./MovieReview/MovieReview'));
 
 export const App = () => {
   return (
